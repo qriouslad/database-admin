@@ -41,6 +41,18 @@
         $(giveFeedback).prependTo('.da .csf-header-right');
         $(addReview).prependTo('.da .csf-header-right');
 
+        // Remove codestar <form> parent element
+        // https://bobbyhadz.com/blog/javascript-remove-parent-element
+
+        const child = $('.csf-header')[0];
+
+        child.parentElement.replaceWith(...child.parentElement.childNodes);
+
+        // Remove codestar hidden inputs
+        $('.csf-section-id').remove();
+        $('#csf_options_noncedatabase-admin').remove();
+        $('input[name="_wp_http_referer"]').remove();        
+
 	});
 
 })( jQuery );
