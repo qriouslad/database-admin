@@ -122,6 +122,11 @@ class Database_Admin {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-database-admin-public.php';
 
+		/**
+		 * Include CodeStar framework
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'vendor/codestar-framework/codestar-framework.php';
+
 		$this->loader = new Database_Admin_Loader();
 
 	}
@@ -144,6 +149,28 @@ class Database_Admin {
 	}
 
 	/**
+	 * Check if current screen is this plugin's main page
+	 *
+	 * @since 1.0.0
+	 */
+	public function is_da() {
+
+		// e.g. https://www.domain.com/wp-admin/tools.php?page=database-admin
+		$request_uri = sanitize_text_field( $_SERVER['REQUEST_URI'] );
+
+		if ( strpos( $request_uri, 'tools.php?page=' . $this->plugin_name ) !== false ) {
+
+			return true; // Yes, this is the plugin's main page
+
+		} else {
+
+			return false; // No, this is not the plugin's main page
+
+		}		
+
+	}
+
+	/**
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
@@ -154,8 +181,23 @@ class Database_Admin {
 
 		$plugin_admin = new Database_Admin_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'da_remove_codestar_submenu' );
+
+		if ( is_admin() && $this->is_da() ) {
+
+			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+			$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+
+			$this->loader->add_action( 'csf_loaded', $plugin_admin, 'da_main_page' );
+
+		} else {
+
+			$this->loader->add_action( 'admin_menu', $plugin_admin, 'da_register_submenu' );
+
+		}
+
+		$this->loader->add_filter( 'plugin_action_links_'.$this->plugin_name.'/'.$this->plugin_name.'.php', $plugin_admin, 'da_plugin_action_links' );
+
 
 	}
 
