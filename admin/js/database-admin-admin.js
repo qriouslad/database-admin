@@ -29,4 +29,18 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
+	$(document).ready( function() {
+
+		// Append links to plugin's main page header
+
+        var addReview = '<a href="https://wordpress.org/plugins/database-admin/#reviews" target="_blank" class="header-action"><span>&starf;</span> Review</a>';
+        var giveFeedback = '<a href="https://wordpress.org/support/plugin/database-admin/" target="_blank" class="header-action">&#10010; Feedback</a>';
+        var donate = '<a href="https://paypal.me/qriouslad" target="_blank" class="header-action">&#10084; Donate</a>';
+
+        $(donate).prependTo('.da .csf-header-right');
+        $(giveFeedback).prependTo('.da .csf-header-right');
+        $(addReview).prependTo('.da .csf-header-right');
+
+	});
+
 })( jQuery );
