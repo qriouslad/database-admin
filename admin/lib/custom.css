@@ -34,6 +34,18 @@ h3#indexes {
 	margin-top: 16px;
 }
 
+#tables {
+	border-top: 1px solid #eee;	
+}
+
+#tables a.select {
+	color: #ccc;
+}
+
+#tables li:hover a.select {
+	color: #2e84e4;
+}
+
 #menu #dbs {
 	padding: 0 15px;
 }
@@ -60,6 +72,16 @@ h3#indexes {
 
 #breadcrumb {
 	left: 372px;
+	color: #999;
+}
+
+#breadcrumb a {
+	text-decoration: none;
+}
+
+#breadcrumb a:hover {
+	color: #2e84e4;
+	text-decoration: underline;
 }
 
 #content h2 {
@@ -83,7 +105,7 @@ h3#indexes {
 }
 
 #content p.links a.active,
-#tables a.active,
+#tables a.active.structure,
 #tables a.active + a {
 	color: #34567c;
 	font-weight: bold;	

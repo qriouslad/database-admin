@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Database Admin
  * Plugin URI:        https://wordpress.org/plugins/database-admin/
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Securely manage your website's database with a clean and user-friendly interface.
  * Version:           1.0.0
  * Author:            Bowo
  * Author URI:        https://bowo.io
