@@ -2,3 +2,59 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+
+.da .csf-header-inner {
+    background-color: #fafafa;
+    border-bottom: 1px solid #eee;
+    padding: 12px 16px 8px;
+}
+
+.csf-theme-dark.da .csf-header-inner h1 {
+    color:  #23282d;
+}
+
+.da .csf-header-inner h1 small {
+    font-size: 14px;
+}
+
+.da .csf-buttons {
+    display: none;
+}
+
+.da .csf-header a {
+    text-decoration: none;
+    transition: .25s;
+}
+
+.da .da-header-action span {
+    font-size: 1.125em;
+}
+
+.da .csf-header a:hover {
+    text-decoration: underline;
+}
+
+.da .header-action {
+    line-height: 30px;
+    margin-left: 16px;
+}
+
+.da .header-action span {
+    font-size: 1.125em;
+}
+
+.da .header-action:first-child {
+    margin-left: 0;
+}
+
+/* Adminer iFrame */
+
+.da #da-iframe {
+    width: 100%;
+    min-width: 100%;
+    min-height: calc(100vh - 148px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 999;
+}

@@ -100,4 +100,154 @@ class Database_Admin_Admin {
 
 	}
 
+	/**
+	 * Output Adminer iframe
+	 *
+	 * @since 1.0.0
+	 */
+	public function da_adminer() {
+
+		ob_start();
+
+		echo '<iframe id="da-iframe" src="/dbadmnr"></iframe>';
+
+		return ob_get_clean();
+
+	}
+
+	/**
+	 * Conditionally include adminer.php script
+	 *
+	 * @since 1.0.0
+	 */
+	public function da_maybe_include_adminer() {
+
+		$request_uri = sanitize_url( $_SERVER['REQUEST_URI'] );
+
+		if ( strpos( $request_uri, 'dbadmnr' ) !== false ) {
+
+			if ( current_user_can( 'manage_options' ) ) {
+
+				include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/lib/adminer.php';
+				exit;
+
+			} else {
+
+				exit;
+
+			}
+
+		}
+
+	}
+
+	/**
+	 * Add main admin page
+	 *
+	 * @since 1.0.0
+	 */
+	public function da_main_page() {
+
+		if ( class_exists( 'CSF' ) ) {
+
+			// Set a unique slug-like ID
+
+			$prefix = 'database-admin';
+
+			CSF::createOptions ( $prefix, array(
+
+				'menu_title' 		=> 'Database Admin',
+				'menu_slug' 		=> 'database-admin',
+				'menu_type'			=> 'submenu',
+				'menu_parent'		=> 'tools.php',
+				'menu_position'		=> 1,
+				'framework_title' 	=> 'Database Admin <small>by <a href="https://bowo.io" target="_blank">bowo.io</a></small>',
+				'framework_class' 	=> 'da',
+				'show_bar_menu' 	=> false,
+				'show_search' 		=> false,
+				'show_reset_all' 	=> false,
+				'show_reset_section' => false,
+				'show_form_warning' => false,
+				'sticky_header'		=> true,
+				'save_defaults'		=> true,
+				'show_footer' 		=> false,
+				'footer_credit'		=> '<a href="https://wordpress.org/plugins/database-admin/" target="_blank">Database Admin</a> (<a href="https://github.com/qriouslad/database-admin" target="_blank">github</a>) is built with the <a href="https://github.com/devinvinson/WordPress-Plugin-Boilerplate/" target="_blank">WordPress Plugin Boilerplate</a>, <a href="https://wppb.me" target="_blank">wppb.me</a>, <a href="https://github.com/Codestar/codestar-framework" target="_blank">CodeStar</a> and <a href="https://www.adminer.org/" target="_blank">Adminer</a>.',
+
+			) );
+
+			CSF::createSection( $prefix, array(
+
+				'title'		=> 'Adminer',
+				'fields'	=> array(
+
+					array(
+						'type'		=> 'content',
+						'title'		=> '',
+						'class'		=> 'da-body',
+						'content'	=> $this->da_adminer(),
+					),
+
+				),
+
+			) );
+
+		}
+
+	}
+
+	/**
+	 * Register a submenu directly with WP core function
+	 *
+	 * @since 1.0.0
+	 */
+	public function da_register_submenu() {
+
+		add_submenu_page(
+			'tools.php',
+			'Database Admin',
+			'Database Admin',
+			'manage_options',
+			'database-admin',
+			'da_register_submenu_callback'
+		);
+	}
+
+	/**
+	 * Skeleton callback function for submenu registration
+	 *
+	 * @since 1.0.0
+	 */
+	public function da_register_submenu_callback() {
+
+		echo 'Nothing to show here...';
+
+	}
+
+	/**
+	 * Add "Access Now" plugin action link
+	 *
+	 * @since 1.0.0
+	 */
+	public function da_plugin_action_links( $links ) {
+
+		$action_link = '<a href="tools.php?page=' . $this->plugin_name . '">Access Now</a>';
+
+		array_unshift( $links, $action_link );
+
+		return $links;
+
+	}
+
+	/**
+	 * Remove CodeStar framework welcome / ads page
+	 *
+	 * @since 1.0.0
+	 */
+	public function da_remove_codestar_submenu() {
+
+		remove_submenu_page( 'tools.php', 'csf-welcome' );
+
+	}
+
+
 }
