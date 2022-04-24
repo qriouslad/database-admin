@@ -156,9 +156,9 @@ class Database_Admin {
 	public function is_da() {
 
 		// e.g. https://www.domain.com/wp-admin/tools.php?page=database-admin
-		$request_uri = sanitize_text_field( $_SERVER['REQUEST_URI'] );
+		$request_uri = sanitize_url( $_SERVER['REQUEST_URI'] );
 
-		if ( strpos( $request_uri, 'tools.php?page=' . $this->plugin_name ) !== false ) {
+		if ( strpos( $request_uri, 'page=' . $this->plugin_name ) !== false ) {
 
 			return true; // Yes, this is the plugin's main page
 
@@ -182,6 +182,8 @@ class Database_Admin {
 		$plugin_admin = new Database_Admin_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'da_remove_codestar_submenu' );
+
+		$this->loader->add_action( 'plugins_loaded', $plugin_admin, 'da_maybe_include_adminer' );
 
 		if ( is_admin() && $this->is_da() ) {
 
