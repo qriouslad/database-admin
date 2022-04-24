@@ -29,6 +29,10 @@ Securely manage your website's database with a clean and user-friendly interface
 
 1. The main Database Admin page
    ![The main Database Admin page](.wordpress-org/screenshot-1.png)
+2. Viewing the wp_posts table
+   ![Viewing the wp_posts table](.wordpress-org/screenshot-2.png)
+3. Editing a record in the wp_options table
+   ![Editing a record in the wp_options table](.wordpress-org/screenshot-3.png)
 
 ## Frequently Asked Questions
 
