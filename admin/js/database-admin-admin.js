@@ -51,7 +51,7 @@
         // Remove codestar hidden inputs
         $('.csf-section-id').remove();
         $('#csf_options_noncedatabase-admin').remove();
-        $('input[name="_wp_http_referer"]').remove();        
+        $('input[name="_wp_http_referer"]').remove();
 
 	});
 
