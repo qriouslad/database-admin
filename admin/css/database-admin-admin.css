@@ -5,8 +5,8 @@
 
 .da .csf-header-inner {
     background-color: #fafafa;
-    border-bottom: 1px solid #f5f5f5;
-    padding: 25px 30px;
+    border-bottom: 1px solid #eee;
+    padding: 12px 16px 8px;
 }
 
 .csf-theme-dark.da .csf-header-inner h1 {
@@ -45,4 +45,16 @@
 
 .da .header-action:first-child {
     margin-left: 0;
+}
+
+/* Adminer iFrame */
+
+.da #da-iframe {
+    width: 100%;
+    min-width: 100%;
+    min-height: calc(100vh - 136px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 999;
 }

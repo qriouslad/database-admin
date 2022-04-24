@@ -101,13 +101,43 @@ class Database_Admin_Admin {
 	}
 
 	/**
-	 * Output Adminer
+	 * Output Adminer iframe
 	 *
 	 * @since 1.0.0
 	 */
 	public function da_adminer() {
 
-		return '';
+		ob_start();
+
+		echo '<iframe id="da-iframe" src="/dbadmnr"></iframe>';
+
+		return ob_get_clean();
+
+	}
+
+	/**
+	 * Conditionally include adminer.php script
+	 *
+	 * @since 1.0.0
+	 */
+	public function da_maybe_include_adminer() {
+
+		$request_uri = sanitize_url( $_SERVER['REQUEST_URI'] );
+
+		if ( strpos( $request_uri, 'dbadmnr' ) !== false ) {
+
+			if ( current_user_can( 'manage_options' ) ) {
+
+				include plugin_dir_path( dirname( __FILE__ ) ) . 'admin/lib/adminer.php';
+				exit;
+
+			} else {
+
+				exit;
+
+			}
+
+		}
 
 	}
 
@@ -141,7 +171,7 @@ class Database_Admin_Admin {
 				'sticky_header'		=> true,
 				'save_defaults'		=> true,
 				'show_footer' 		=> false,
-				'footer_credit'		=> '<a href="https://wordpress.org/plugins/database-admin/" target="_blank">Database Admin</a> (<a href="https://github.com/qriouslad/database-admin" target="_blank">github</a>) is built with the <a href="https://github.com/devinvinson/WordPress-Plugin-Boilerplate/" target="_blank">WordPress Plugin Boilerplate</a>, <a href="https://wppb.me" target="_blank">wppb.me</a> and <a href="https://github.com/Codestar/codestar-framework" target="_blank">CodeStar</a>.',
+				'footer_credit'		=> '<a href="https://wordpress.org/plugins/database-admin/" target="_blank">Database Admin</a> (<a href="https://github.com/qriouslad/database-admin" target="_blank">github</a>) is built with the <a href="https://github.com/devinvinson/WordPress-Plugin-Boilerplate/" target="_blank">WordPress Plugin Boilerplate</a>, <a href="https://wppb.me" target="_blank">wppb.me</a>, <a href="https://github.com/Codestar/codestar-framework" target="_blank">CodeStar</a> and <a href="https://www.adminer.org/" target="_blank">Adminer</a>.',
 
 			) );
 
