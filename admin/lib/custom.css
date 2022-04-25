@@ -40,6 +40,7 @@ h3#indexes {
 
 #tables a.select {
 	color: #ccc;
+	font-weight: normal;
 }
 
 #tables li:hover a.select {
