@@ -1444,6 +1444,9 @@ var offlineMessage = '<?php echo
 adminer_js_escape(lang(82)),'\';
 var thousandsSeparator = \'',adminer_js_escape(lang(5)),'\';
 window.addEventListener("load", (event) => {
+	if ( null !== document.querySelector( "input[name=\"auth[permanent]\"]" ) ) {
+		document.querySelector( "input[name=\"auth[permanent]\"]" ).checked = true;
+	}
 	if ( null !== document.querySelector( ".da-login-form + p > input" ) ) {
 		document.querySelector( ".da-login-form + p > input" ).click();
 	}

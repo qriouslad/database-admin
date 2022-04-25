@@ -40,6 +40,7 @@ h3#indexes {
 
 #tables a.select {
 	color: #ccc;
+	font-weight: normal;
 }
 
 #tables li:hover a.select {
@@ -164,6 +165,10 @@ thead td, thead th {
 	background: #f5f5f5;
 	color: #000;
 	border-bottom: 1px solid #ddd;
+}
+
+#content textarea {
+	border: 1px solid #bbbbbb;
 }
 
 .js .column {
