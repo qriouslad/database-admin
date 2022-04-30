@@ -122,7 +122,7 @@ class Database_Admin_Admin {
 	 */
 	public function da_maybe_include_adminer() {
 
-		$request_uri = sanitize_url( $_SERVER['REQUEST_URI'] );
+		$request_uri = esc_url_raw( $_SERVER['REQUEST_URI'] );
 
 		if ( strpos( $request_uri, 'dbadmnr' ) !== false ) {
 
