@@ -105,6 +105,12 @@ h3#indexes {
 	background: transparent;
 }
 
+#tables .structure {
+	max-width: 300px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
 #content p.links a.active,
 #tables a.active.structure,
 #tables a.active + a {

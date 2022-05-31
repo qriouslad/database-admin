@@ -4,8 +4,8 @@ Contributors: qriouslad
 Donate link: https://paypal.me/qriouslad  
 Tags: database manager, adminer, mysql, mariadb, sql  
 Requires at least: 4.8  
-Tested up to: 5.9.3  
-Stable tag: 1.0.1  
+Tested up to: 6.0  
+Stable tag: 1.1.0  
 Requires PHP: 5.6  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -41,6 +41,11 @@ Securely manage your website's database with a clean and user-friendly interface
 System Dashboard was built with: [WordPress Plugin Boilerplate](https://github.com/devinvinson/WordPress-Plugin-Boilerplate/) | [wppb.me](https://wppb.me/) | [CodeStar framework](https://github.com/Codestar/codestar-framework) | [Adminer](https://www.adminer.org/)
 
 ## Changelog
+
+### 1.1.0 (2022.05.31)
+
+* Fix text overflow issue in DB structure panel
+* Enable plugin updates via [Git Updater](https://github.com/afragen/git-updater)
 
 ### 1.0.1 (2022.04.30)
 
