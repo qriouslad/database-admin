@@ -23,6 +23,8 @@
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       database-admin
  * Domain Path:       /languages
+ * GitHub Plugin URI: qriouslad/database-admin
+ * GitHub Plugin URI: https://github.com/qriouslad/database-admin
  */
 
 // If this file is called directly, abort.
