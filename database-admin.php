@@ -16,7 +16,7 @@
  * Plugin Name:       Database Admin
  * Plugin URI:        https://wordpress.org/plugins/database-admin/
  * Description:       Securely manage your website's database with a clean and user-friendly interface.
- * Version:           1.1.0
+ * Version:           1.1.1
  * Author:            Bowo
  * Author URI:        https://bowo.io
  * License:           GPL-2.0+
@@ -37,7 +37,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'DATABASE_ADMIN_VERSION', '1.1.0' );
+define( 'DATABASE_ADMIN_VERSION', '1.1.1' );
 
 /**
  * The code that runs during plugin activation.
